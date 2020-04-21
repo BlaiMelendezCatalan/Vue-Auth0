@@ -27,30 +27,25 @@
 
       <v-spacer></v-spacer>
 
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
+      <v-btn to="/" class="mr-2">Home</v-btn>
+      <v-btn to="/about"  class="mr-2">About</v-btn>
+      <v-btn to="/contact"  class="mr-2">Contact</v-btn>
+      <v-btn to="/members"  class="mr-2">Members</v-btn>
     </v-app-bar>
 
     <v-content>
-      <HelloWorld/>
+      <router-view/>
     </v-content>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
+
 
 export default {
   name: 'App',
 
   components: {
-    HelloWorld,
   },
 
   data: () => ({
