@@ -28,9 +28,11 @@
       <v-spacer></v-spacer>
 
       <v-btn to="/" class="mr-2">Home</v-btn>
-      <v-btn to="/about"  class="mr-2">About</v-btn>
-      <v-btn to="/contact"  class="mr-2">Contact</v-btn>
-      <v-btn to="/members"  class="mr-2">Members</v-btn>
+      <v-btn to="/about" class="mr-2">About</v-btn>
+      <v-btn to="/contact" class="mr-2">Contact</v-btn>
+      <v-btn to="/members" class="mr-2">Members</v-btn>
+      <v-btn to="/login" v-if="!getState" @click="changeState()" class="mr-2">Log in</v-btn>
+      <v-btn to="/" v-if="getState" @click="changeState()" class="mr-2">Log out</v-btn>
     </v-app-bar>
 
     <v-content>
@@ -49,7 +51,17 @@ export default {
   },
 
   data: () => ({
-    //
+    clientId: process.env.VUE_APP_AUTH0_CONFIG_CLIENTID
   }),
+  computed: {
+    getState: function () {
+      return this.$store.state.userIsAutheticated
+    },
+  },
+  methods: {
+    changeState: function () {
+      this.$store.state.userIsAutheticated = !this.$store.state.userIsAutheticated
+    }
+  }
 };
 </script>
